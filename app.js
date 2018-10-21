@@ -8,7 +8,13 @@ const notes = require('./notes.js');
 var command = argv._[0];
 
 if (command === 'add') {
-    notes.addNote(argv.title, argv.body);
+    var note = notes.addNote(argv.title, argv.body);
+    if (note) {
+        console.log("Created note:", note.title, note.body);
+    }
+    else {
+        console.log("This note already exists.");
+    }
 }
 else if (command === 'list') {
     notes.getAll();

@@ -23,7 +23,9 @@ else if (command === 'read') {
     notes.getNote(argv.title);
 }
 else if (command === 'remove') { 
-    notes.deleteNote(argv.title);
+    var noteRemoved = notes.deleteNote(argv.title);
+    var message = noteRemoved ? 'Note was removed' : 'Note NOT removed';
+    console.log(message);
 }
 else {
     console.log('Unknown command.');

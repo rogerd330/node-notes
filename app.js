@@ -10,17 +10,28 @@ var command = argv._[0];
 if (command === 'add') {
     var note = notes.addNote(argv.title, argv.body);
     if (note) {
-        console.log("Created note:", note.title, note.body);
+        console.log("Note created");
+        notes.logNote(note);
     }
     else {
         console.log("This note already exists.");
     }
 }
 else if (command === 'list') {
-    notes.getAll();
+    var allNotes = notes.getAll();
+    _.forEach(allNotes, function(note, i) {
+        console.log(`Note # ${i}`);
+        notes.logNote(note);
+    });
 }
 else if (command === 'read') {
-    notes.getNote(argv.title);
+    var note = notes.getNote(argv.title);
+    if (note) {
+        notes.logNote(note);
+    }
+    else {
+        console.log('Note NOT found');
+    }
 }
 else if (command === 'remove') { 
     var noteRemoved = notes.deleteNote(argv.title);

@@ -1,5 +1,3 @@
-console.log('notes lib...');
-
 const fs = require('fs');
 
 var fetchNotes = () => {

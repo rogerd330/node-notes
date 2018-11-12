@@ -19,6 +19,7 @@ if (command === 'add') {
 }
 else if (command === 'list') {
     var allNotes = notes.getAll();
+    console.log(`Printing ${allNotes.length} note(s)`);
     _.forEach(allNotes, function(note, i) {
         console.log(`Note # ${i}`);
         notes.logNote(note);

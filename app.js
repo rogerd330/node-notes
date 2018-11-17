@@ -1,7 +1,31 @@
 
+var titleOptions = {
+    describe: 'The title of the note',
+    demand: true,
+    alias: 't'
+};
+var bodyOptions = {
+    describe: 'The actual note text',
+    demand: true,
+    alias: 'b'
+};
+
 const fs = require('fs');
 const _ = require('lodash');
-const argv = require('yargs').argv;
+const argv = require('yargs')
+    .command('add', 'Add a note.', {
+        title: titleOptions,
+        body: bodyOptions
+    })
+    .command('list', 'Print out all notes', {})
+    .command('read', 'Read a single note', {
+        title: titleOptions
+    })
+    .command('remove', 'Remove a single note', {
+        title: titleOptions
+    })
+    .help()
+    .argv;
 
 const notes = require('./notes.js');
 
